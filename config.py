@@ -15,7 +15,7 @@ class Settings(BaseSettings):
     TELEGRAM_TOKEN = os.getenv("TELEGRAM_TOKEN")
     WEBHOOK_URL = os.getenv("WEBHOOK_URL")
     BASE_URL = f"https://api.telegram.org/bot{TELEGRAM_TOKEN}"
-    EMOJI = "😊"
+    EMOJI = "👀"
 
     model_config = ConfigDict(
         env_file=".env",
