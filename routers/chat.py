@@ -65,14 +65,14 @@ async def process_dialog(client, dialog):
         logger.error(f"Ошибка обработки диалога: {str(e)}")
         return None
 
-@router.post("/change/", response_model=dict)
-async def change_chat(user_info: User):
+@router.get("/change/", response_model=dict)
+async def change_chat():
     """Добавление реакций в последние сообщения диалогов"""
     try:
         async with TelegramClient(
             session='session_name',
-            api_id=user_info.api_id,
-            api_hash=user_info.api_hash
+            api_id=settings.API_ID,
+            api_hash=settings.API_HASH
         ) as client:
             # Инициализация соединения
             await client.start()
