@@ -1,5 +1,5 @@
 from pydantic import BaseModel
 
-
 class User(BaseModel):
-    tg_id: str
+    api_id: int
+    api_hash: str

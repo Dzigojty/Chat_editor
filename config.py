@@ -1,26 +1,19 @@
-import os
 from pydantic_settings import BaseSettings
-from pydantic import ConfigDict
-
+from typing import Optional, ClassVar
 
 class Settings(BaseSettings):
-    SERVER_HOST: str
-    SERVER_PORT: int
-
-    SECRET_KEY: str
-    ALGORITHM: str = "HS256"
-
-    UPLOAD_DIR: str = "uploads"
-
-    TELEGRAM_TOKEN = os.getenv("TELEGRAM_TOKEN")
-    WEBHOOK_URL = os.getenv("WEBHOOK_URL")
-    BASE_URL = f"https://api.telegram.org/bot{TELEGRAM_TOKEN}"
-    EMOJI = "👀"
-
-    model_config = ConfigDict(
-        env_file=".env",
-        env_file_encoding="utf-8",
-    )
-
+    # Обязательные поля (аннотируем явно)
+    API_ID: int
+    API_HASH: str
+    
+    # Если токен не используется - удалите эти строки
+    TELEGRAM_TOKEN: Optional[str] = None  # Добавьте аннотацию типа
+    
+    # Если переменная константа (не из .env)
+    DEBUG_MODE: ClassVar[bool] = True  # Пример ClassVar
+    
+    class Config:
+        env_file = ".env"
+        extra = "ignore"
 
 settings = Settings()
