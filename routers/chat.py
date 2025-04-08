@@ -3,7 +3,7 @@ from telethon.tl.types import InputPeerEmpty, ReactionEmoji
 from telethon.tl.functions.messages import SendReactionRequest
 from fastapi import APIRouter, HTTPException, status
 from fastapi.responses import JSONResponse
-from schemas.user import User
+from schemas.chanal import Chanal
 from config import settings
 import logging
 import asyncio
